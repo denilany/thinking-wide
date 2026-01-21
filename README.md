@@ -112,7 +112,7 @@ thinking-wide/
 1. Clone the repository:
    ```bash
    git clone https://github.com/denilany/thinking-wide.git
-````
+```
 
 2. Navigate to the `prototype` folder
 3. Open `index.html` in any modern web browser
