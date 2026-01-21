@@ -103,14 +103,14 @@ thinking-wide/
 └── presentation/
 └── slides.pdf
 
-````
+```
 
 ---
 
 ##  How to Run the Prototype
 
 1. Clone the repository:
-   ```bash
+ ```bash
    git clone https://github.com/denilany/thinking-wide.git
 ```
 
