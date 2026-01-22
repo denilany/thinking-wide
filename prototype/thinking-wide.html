@@ -3,10 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillBridge AI</title>
-    <link rel="stylesheet" href="thinking-wide.css">
+    <title>SkillBridge AI - Turn Skills into Careers</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="thinking-wide.css" rel="stylesheet">
 </head>
 <body>
+
+    <nav>
+        <div class="logo">
+            <span class="logo-primary">SkillBridge</span> <span class="logo-secondary">AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">How it Works</a>
+            <a href="#">Features</a>
+            <a href="#">Testimonials</a>
+        </div>
+        <button class="btn-primary">Get Started</button>
+    </nav>
+
+    <main>
+
+        <section class="hero">
+            <h1>From Uncertainty to Clarity.</h1>
+            <p>Stop guessing. SkillBridge AI maps your unique skills to high-growth career paths with personalized roadmaps.</p>
+        </section>
+
+        <div class="card-container">
+            <div class="tabs">
+                <div id="tab1" class="tab active">1. Share Skills</div>
+                <div id="tab2" class="tab">2. AI Match</div>
+                <div id="tab3" class="tab">3. Your Roadmap</div>
+            </div>
+
+            <div class="tab-content">
+                <div id="content1" class="content-section">
+                    <h3>What do you know?</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Current Skills</label>
+                            <input type="text" placeholder="e.g. HTML, CSS, JavaScript" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Interest</label>
+                            <select class="form-select">
+                                <option>Web Development</option>
+                                <option>Data Science</option>
+                                <option>Digital Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="nextStep(2)" class="btn-gradient">Analyze My Profile</button>
+                </div>
+
+                <div id="content2" class="hidden content-section match-result">
+                    <div class="success-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3>Perfect Match Found!</h3>
+                    <div class="match-card">
+                        <p class="match-label">Target Career</p>
+                        <h4 class="match-title">Frontend Developer</h4>
+                    </div>
+                    <p class="match-description">Based on your HTML/CSS skills, you are 65% ready for this role.</p>
+                    <button onclick="nextStep(3)" class="btn-dark">Bridge the Gap</button>
+                </div>
+
+                <div id="content3" class="hidden content-section">
+                    <h3>Actionable Learning Plan</h3>
+                    <div class="roadmap-list">
+                        <div class="roadmap-item">
+                            <div class="roadmap-number">1</div>
+                            <div class="roadmap-content">
+                                <h5>React Fundamentals</h5>
+                                <p>4-6 weeks • Focus on Hooks and State Management</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-number">2</div>
+                            <div class="roadmap-content">
+                                <h5>Web Accessibility (WCAG)</h5>
+                                <p>1-2 weeks • Master semantic HTML and ARIA roles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-outline">Download Full Roadmap</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="testimonial-section">
+            <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students collaborating">
+            </div>
+            <div class="testimonial-content">
+                <h2>Success Story: Sarah J.</h2>
+                <blockquote class="testimonial-quote">
+                    "I graduated with a CS degree but felt lost in the job market. SkillBridge AI identified my strength in UX and gave me a 3-month roadmap to become a Frontend Dev. I'm now 2 months into my first role!"
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SJ</div>
+                    <div class="author-info">
+                        <p>Recent Graduate</p>
+                        <p>University of Nairobi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script src="thinking-wide.js"></script>
 </body>
 </html>
