@@ -19,7 +19,7 @@ body {
 
 /* Utility Classes */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Navigation */
@@ -393,6 +393,824 @@ main {
     color: #6b7280;
 }
 
+/* Step Sections */
+.step-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.step-section.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress Indicator */
+.progress-container {
+    max-width: 56rem;
+    margin: 0 auto 3rem;
+    padding: 2rem 1rem;
+}
+
+.progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+}
+
+.progress-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+}
+
+.progress-step.completed .progress-circle {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.progress-step.current .progress-circle {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    transform: scale(1.1);
+}
+
+.progress-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+    text-align: center;
+}
+
+.progress-step.current .progress-label {
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.progress-line {
+    flex: 1;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin: 0 0.5rem;
+    position: relative;
+    top: -1.25rem;
+}
+
+.progress-step.completed + .progress-line {
+    background-color: #4f46e5;
+}
+
+/* Card Enhancements */
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card-header h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.subtitle-small {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.card-body {
+    padding: 0 2rem 2rem;
+}
+
+/* Form Enhancements */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.required {
+    color: #ef4444;
+}
+
+.optional {
+    color: #9ca3af;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+.tooltip-icon {
+    display: inline-block;
+    margin-left: 0.25rem;
+    color: #6b7280;
+    cursor: help;
+    position: relative;
+}
+
+.tooltip-icon:hover {
+    color: #4f46e5;
+}
+
+.tooltip-icon[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    max-width: 200px;
+    white-space: normal;
+    z-index: 100;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Validation States */
+.form-input.valid,
+.form-select.valid {
+    border-color: #10b981;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2310b981'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+    padding-right: 2.5rem;
+}
+
+.form-input.invalid,
+.form-select.invalid {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+}
+
+.error-message {
+    display: none;
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Checkbox Groups */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label:hover {
+    border-color: #a5b4fc;
+    background-color: #f5f7ff;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+    cursor: pointer;
+    accent-color: #4f46e5;
+}
+
+.checkbox-label span {
+    font-size: 0.9375rem;
+    color: #374151;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-secondary {
+    background-color: #f3f4f6;
+    color: #374151;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: #6b7280;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.btn-text:hover {
+    color: #4f46e5;
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.badge-optional {
+    display: inline-block;
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+/* Loading States */
+.loading-container {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-content {
+    text-align: center;
+    padding: 3rem;
+}
+
+.loading-spinner {
+    margin: 0 auto 2rem;
+}
+
+.spinner {
+    width: 4rem;
+    height: 4rem;
+    border: 4px solid #e5e7eb;
+    border-top-color: #4f46e5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-message {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.loading-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.loading-progress {
+    margin-top: 2rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.progress-text {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-align: center;
+}
+
+/* Success Header */
+.success-header {
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-icon-large {
+    width: 5rem;
+    height: 5rem;
+    background-color: #d1fae5;
+    color: #059669;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+}
+
+.success-icon-large.celebration {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+}
+
+/* Career Matches */
+.career-matches {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.career-card {
+    background-color: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.career-card:hover {
+    border-color: #a5b4fc;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+    transform: translateY(-2px);
+}
+
+.career-card.featured {
+    border-color: #4f46e5;
+    background: linear-gradient(to bottom, #eef2ff 0%, white 100%);
+}
+
+.career-badge {
+    position: absolute;
+    top: -0.75rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.career-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.career-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.readiness-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d1fae5;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+}
+
+.readiness-badge.secondary {
+    background-color: #e0e7ff;
+}
+
+.readiness-percent {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #059669;
+}
+
+.readiness-badge.secondary .readiness-percent {
+    color: #4f46e5;
+}
+
+.readiness-label {
+    font-size: 0.75rem;
+    color: #065f46;
+    font-weight: 600;
+}
+
+.readiness-badge.secondary .readiness-label {
+    color: #3730a3;
+}
+
+.career-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.detail-item i {
+    color: #4f46e5;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.detail-item strong {
+    display: block;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.detail-item p {
+    color: #6b7280;
+    font-size: 0.9375rem;
+    margin: 0;
+}
+
+.badge-high,
+.badge-growing {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-high {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.badge-growing {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+/* Roadmap Header */
+.roadmap-header {
+    text-align: center;
+    padding: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.roadmap-header h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+.roadmap-header h2 span {
+    color: #4f46e5;
+}
+
+.progress-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.progress-circle-large {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-circle-large svg {
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #e5e7eb;
+    stroke-width: 8;
+}
+
+.progress-ring {
+    fill: none;
+    stroke: url(#gradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.progress-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #4f46e5;
+}
+
+.progress-info {
+    text-align: left;
+}
+
+.progress-main {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.progress-sub {
+    color: #6b7280;
+    font-size: 0.9375rem;
+}
+
+/* Enhanced Roadmap Items */
+.roadmap-item h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.roadmap-time {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.roadmap-time i {
+    margin-right: 0.25rem;
+}
+
+.roadmap-focus,
+.roadmap-why {
+    font-size: 0.9375rem;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.roadmap-resources {
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.roadmap-resources strong {
+    display: block;
+    color: #111827;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+}
+
+.roadmap-resources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.roadmap-resources li {
+    margin-bottom: 0.5rem;
+}
+
+.roadmap-resources a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.3s ease;
+}
+
+.roadmap-resources a:hover {
+    color: #6366f1;
+    text-decoration: underline;
+}
+
+.roadmap-resources a::before {
+    content: "→ ";
+    margin-right: 0.25rem;
+}
+
+.roadmap-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Action Cards (Step 8) */
+.action-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.action-card {
+    background-color: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover {
+    border-color: #a5b4fc;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+    transform: translateY(-2px);
+}
+
+.action-icon {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    color: #4f46e5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.action-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+.action-card p {
+    color: #6b7280;
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.email-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.email-form input {
+    flex: 1;
+}
+
+.final-cta {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.encouragement-text {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    display: inline-block;
+    max-width: 600px;
+}
+
+.encouragement-text i {
+    color: #f59e0b;
+    margin-right: 0.5rem;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+}
+
+.modal-icon.error {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.modal-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+.modal-content p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
 /* Responsive Design */
 @media (min-width: 768px) {
     .nav-links {
@@ -407,8 +1225,78 @@ main {
         grid-template-columns: 1fr 1fr;
     }
 
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .testimonial-section {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .career-matches {
+        grid-template-columns: 1fr;
+    }
+
+    .action-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .progress-label {
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .action-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.career-card,
+.action-card,
+.roadmap-item {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.career-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.career-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Print Styles */
+@media print {
+    nav,
+    .progress-container,
+    .form-actions,
+    .roadmap-actions,
+    .btn-gradient,
+    .btn-outline,
+    .btn-primary {
+        display: none;
+    }
+
+    .step-section {
+        display: block !important;
+        page-break-after: always;
     }
 }
 
